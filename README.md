@@ -3,7 +3,7 @@
 <h3 align="center">A RESTful API as pizza restaurant ordering system.</h3>
 
 <h3 align="center">
-<a href="https://order-pizza-api.herokuapp.com/api/ui">Documentation </a>
+<a href="http://127.0.0.1:5000/api/ui">Documentation </a>
 </br>
 </br>
 
@@ -27,14 +27,15 @@ Built with (but not limited to) :
 2. `cd order-pizza-api`
 3. `pip install -r requirements.txt` 
    _or place virtual environment and then install_
-4. `python server.py`
+   - (optional) `python3 -m venv venv`
+4. `python3 server.py`
 
 ## Usage
 
 **Example Response**
 
 ```bash
-curl -s https://order-pizza-api.herokuapp.com/api/orders
+curl -s http://127.0.0.1:5000/api/orders
 ```
 
 ```json
@@ -72,7 +73,7 @@ curl -s https://order-pizza-api.herokuapp.com/api/orders
 * POST : `/auth`    
 
 ```bash
-  curl -X POST -H "Content-Type: application/json" -d '{"username": "test", "password": "test"}'  https://order-pizza-api.herokuapp.com/api/auth
+  curl -X POST -H "Content-Type: application/json" -d '{"username": "test", "password": "test"}'  http://127.0.0.1:5000/api/auth
 ```
 
 * POST : `/orders`  (_Access Token is required_)
@@ -89,7 +90,7 @@ curl
     "Size": "XL", 
     "Table_No": 9
   }' 
-  https://order-pizza-api.herokuapp.com/api/orders
+  http://127.0.0.1:5000/api/orders
   ```
 `Do replace the <JWT> in the above request with the token you have acquired.`
 
@@ -97,7 +98,7 @@ curl
 * DELETE : `/orders/{Order_ID}`
 
 ```bash
-curl -X DELETE https://order-pizza-api.herokuapp.com/api/orders/1
+curl -X DELETE http://127.0.0.1:5000/api/orders/1
 ```
 
 ## License
