@@ -1,5 +1,8 @@
 import os
+import time
+import random
 import connexion
+from flask import request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
@@ -28,3 +31,17 @@ db = SQLAlchemy(app)
 
 # Initialize Marshmallow
 ma = Marshmallow(app)
+
+@app.before_request
+def add_random_delay():
+    print("add_random_delay executed")
+    max_delay_str = os.environ.get('MAX_RANDOM_DELAY', '0')
+    print("max_delay_str is " + max_delay_str)
+    try:
+        max_delay = int(max_delay_str)
+        if max_delay > 0:
+            delay = random.uniform(0, max_delay) / 1000.0
+            print(f"delay is: {delay}")
+            time.sleep(delay)
+    except ValueError:
+        pass
